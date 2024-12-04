@@ -167,7 +167,6 @@ const app = {
     // xử lý khi tua
     progress.onchange = function (e) {
       const seekTime = (e.target.value * audio.duration) / 100;
-      audio.currentTime = seekTime;
     };
   },
 

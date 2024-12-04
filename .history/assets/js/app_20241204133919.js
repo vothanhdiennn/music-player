@@ -158,16 +158,8 @@ const app = {
     // khi tiến độ bài hát thay đổi
     audio.ontimeupdate = function () {
       if (audio.duration) {
-        const progressPercent = Math.floor(
-          (audio.currentTime / audio.duration) * 100
-        );
-        progress.value = progressPercent;
+        const progress = Math.floor((audio.currentTime / audio.duration) * 100);
       }
-    };
-    // xử lý khi tua
-    progress.onchange = function (e) {
-      const seekTime = (e.target.value * audio.duration) / 100;
-      audio.currentTime = seekTime;
     };
   },
 

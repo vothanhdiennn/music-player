@@ -161,13 +161,7 @@ const app = {
         const progressPercent = Math.floor(
           (audio.currentTime / audio.duration) * 100
         );
-        progress.value = progressPercent;
       }
-    };
-    // xử lý khi tua
-    progress.onchange = function (e) {
-      const seekTime = (e.target.value * audio.duration) / 100;
-      audio.currentTime = seekTime;
     };
   },
 
