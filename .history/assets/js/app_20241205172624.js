@@ -184,8 +184,7 @@ const app = {
 
     // next bài hát
     nextBtn.onclick = function () {
-      _this.nextSong();
-      audio.play();
+      this.nextSong;
     };
   },
 
@@ -197,8 +196,8 @@ const app = {
 
   nextSong: function () {
     this.currentIndex++;
-    if (this.currentIndex >= this.songs.length) {
-      this.currentIndex = 0;
+    if (this.currentIndex >= this.song.length) {
+      this.currentSong = 0;
     }
     this.loadCurrentSong();
   },

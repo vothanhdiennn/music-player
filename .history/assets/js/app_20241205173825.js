@@ -197,7 +197,7 @@ const app = {
 
   nextSong: function () {
     this.currentIndex++;
-    if (this.currentIndex >= this.songs.length) {
+    if (this.currentIndex >= this.songs.length - 1) {
       this.currentIndex = 0;
     }
     this.loadCurrentSong();

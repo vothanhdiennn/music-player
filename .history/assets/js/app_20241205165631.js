@@ -25,9 +25,6 @@ const audio = $("#audio");
 const playBtn = $(".btn-toggle-play");
 const progress = $("#progress");
 
-const nextBtn = $(".btn-next");
-const prevBtn = $(".btn-prev");
-
 const app = {
   currentIndex: 0,
   isPlaying: false,
@@ -129,11 +126,6 @@ const app = {
     const cdWidth = cd.offsetWidth;
 
     // rotate cd
-    const cdThumbAnimate = cdThumb.animate([{ transform: "rotate(360deg)" }], {
-      duration: 10000,
-      iterations: Infinity,
-    });
-    cdThumbAnimate.pause();
 
     // xử lý phóng to / thu nhỏ cd
     document.onscroll = function () {
@@ -157,14 +149,12 @@ const app = {
     audio.onplay = function () {
       _this.isPlaying = true;
       player.classList.add("playing");
-      cdThumbAnimate.play();
     };
 
     // khi bài hát pause
     audio.onpause = function () {
       _this.isPlaying = false;
       player.classList.remove("playing");
-      cdThumbAnimate.pause();
     };
 
     // khi tiến độ bài hát thay đổi
@@ -181,26 +171,12 @@ const app = {
       const seekTime = (e.target.value * audio.duration) / 100;
       audio.currentTime = seekTime;
     };
-
-    // next bài hát
-    nextBtn.onclick = function () {
-      _this.nextSong();
-      audio.play();
-    };
   },
 
   loadCurrentSong: function () {
     heading.textContent = this.currentSong.name;
     cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`;
     audio.src = this.currentSong.path;
-  },
-
-  nextSong: function () {
-    this.currentIndex++;
-    if (this.currentIndex >= this.songs.length) {
-      this.currentIndex = 0;
-    }
-    this.loadCurrentSong();
   },
 
   start: function () {

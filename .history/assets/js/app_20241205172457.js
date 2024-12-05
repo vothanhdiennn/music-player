@@ -181,12 +181,6 @@ const app = {
       const seekTime = (e.target.value * audio.duration) / 100;
       audio.currentTime = seekTime;
     };
-
-    // next bài hát
-    nextBtn.onclick = function () {
-      _this.nextSong();
-      audio.play();
-    };
   },
 
   loadCurrentSong: function () {
@@ -197,8 +191,8 @@ const app = {
 
   nextSong: function () {
     this.currentIndex++;
-    if (this.currentIndex >= this.songs.length) {
-      this.currentIndex = 0;
+    if (this.currentIndex >= this.song.length) {
+      this.currentSong = 0;
     }
     this.loadCurrentSong();
   },
