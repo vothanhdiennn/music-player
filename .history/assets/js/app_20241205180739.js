@@ -28,13 +28,11 @@ const progress = $("#progress");
 const nextBtn = $(".btn-next");
 const prevBtn = $(".btn-prev");
 const randomBtn = $(".btn-random");
-const repeatBtn = $(".btn-repeat");
 
 const app = {
   currentIndex: 0,
   isPlaying: false,
   isRandom: false,
-  isRepeat: false,
 
   songs: [
     {
@@ -188,42 +186,21 @@ const app = {
 
     // next bài hát
     nextBtn.onclick = function () {
-      if (_this.isRandom) {
-        _this.playRandomSong();
-      } else {
-        _this.nextSong();
-      }
+      _this.nextSong();
       audio.play();
     };
 
     // prev bài hát
     prevBtn.onclick = function () {
-      if (_this.isRandom) {
-        _this.playRandomSong();
-      } else {
-        _this.prevSong();
-      }
+      _this.prevSong();
       audio.play();
     };
 
-    // xử lý bật / tắt random bài hát
+    // bật / tắt random bài hát
     randomBtn.onclick = function (e) {
       _this.isRandom = !_this.isRandom;
       randomBtn.classList.toggle("active", _this.isRandom);
-    };
-
-    // xử lý lặp lại bài hát
-    repeatBtn.onclick = function (e) {
-      _this.isRepeat = !_this.isRepeat;
-      repeatBtn.classList.toggle("active", _this.isRepeat);
-    };
-
-    // xử lý next song khi kết thúc bài hát
-    audio.onended = function () {
-      if (_this.isRepeat) {
-        audio.play();
-      }
-      nextBtn.click();
+      _this.playRandomSong();
     };
   },
 
@@ -254,7 +231,7 @@ const app = {
     } while (newIndex === this.currentIndex);
 
     this.currentIndex = newIndex;
-    this.loadCurrentSong();
+    this.currentSong();
   },
 
   start: function () {

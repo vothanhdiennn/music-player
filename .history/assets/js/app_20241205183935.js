@@ -220,9 +220,6 @@ const app = {
 
     // xử lý next song khi kết thúc bài hát
     audio.onended = function () {
-      if (_this.isRepeat) {
-        audio.play();
-      }
       nextBtn.click();
     };
   },

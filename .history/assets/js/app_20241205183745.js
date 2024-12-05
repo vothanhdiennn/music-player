@@ -213,16 +213,10 @@ const app = {
     };
 
     // xử lý lặp lại bài hát
-    repeatBtn.onclick = function (e) {
-      _this.isRepeat = !_this.isRepeat;
-      repeatBtn.classList.toggle("active", _this.isRepeat);
-    };
+    repeatBtn.onclick = function (e) {};
 
     // xử lý next song khi kết thúc bài hát
     audio.onended = function () {
-      if (_this.isRepeat) {
-        audio.play();
-      }
       nextBtn.click();
     };
   },

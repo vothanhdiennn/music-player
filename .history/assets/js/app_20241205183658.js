@@ -34,7 +34,6 @@ const app = {
   currentIndex: 0,
   isPlaying: false,
   isRandom: false,
-  isRepeat: false,
 
   songs: [
     {
@@ -213,16 +212,10 @@ const app = {
     };
 
     // xử lý lặp lại bài hát
-    repeatBtn.onclick = function (e) {
-      _this.isRepeat = !_this.isRepeat;
-      repeatBtn.classList.toggle("active", _this.isRepeat);
-    };
+    repeatBtn.onclick = function () {};
 
     // xử lý next song khi kết thúc bài hát
     audio.onended = function () {
-      if (_this.isRepeat) {
-        audio.play();
-      }
       nextBtn.click();
     };
   },
