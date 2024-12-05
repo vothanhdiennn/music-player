@@ -233,6 +233,7 @@ const app = {
     // xử lý lặp lại bài hát
     repeatBtn.onclick = function (e) {
       _this.isRepeat = !_this.isRepeat;
+      _this.setConfig("isRandom", _this.isRandom);
       _this.setConfig("isRepeat", _this.isRepeat);
       repeatBtn.classList.toggle("active", _this.isRepeat);
     };
@@ -325,10 +326,6 @@ const app = {
 
     // render playlist
     this.render();
-
-    // hiển thị trạng thái ban đầu của btn repeat và random
-    randomBtn.classList.toggle("active", this.isRandom);
-    repeatBtn.classList.toggle("active", this.isRepeat);
   },
 };
 app.start();

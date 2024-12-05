@@ -281,10 +281,7 @@ const app = {
     audio.src = this.currentSong.path;
   },
 
-  loadConfig: function () {
-    this.isRandom = this.config.isRandom;
-    this.isRepeat = this.config.isRepeat;
-  },
+  loadConfig: function () {},
 
   nextSong: function () {
     this.currentIndex++;
@@ -311,9 +308,6 @@ const app = {
   },
 
   start: function () {
-    // gán cấu hình từ config vào ứng dụng
-    this.loadConfig();
-
     // định nghĩa các thuộc tính cho Object
     this.defineProperties();
 
@@ -325,10 +319,6 @@ const app = {
 
     // render playlist
     this.render();
-
-    // hiển thị trạng thái ban đầu của btn repeat và random
-    randomBtn.classList.toggle("active", this.isRandom);
-    repeatBtn.classList.toggle("active", this.isRepeat);
   },
 };
 app.start();

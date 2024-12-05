@@ -325,10 +325,6 @@ const app = {
 
     // render playlist
     this.render();
-
-    // hiển thị trạng thái ban đầu của btn repeat và random
-    randomBtn.classList.toggle("active", this.isRandom);
-    repeatBtn.classList.toggle("active", this.isRepeat);
   },
 };
 app.start();

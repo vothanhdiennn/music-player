@@ -107,7 +107,7 @@ const app = {
 
   setConfig: function (key, value) {
     this.config[key] = value;
-    localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config));
+    localStorage.setItem(PLAYER_STORAGE_KEY, this.config);
   },
 
   render: function () {
@@ -226,14 +226,12 @@ const app = {
     // xử lý bật / tắt random bài hát
     randomBtn.onclick = function (e) {
       _this.isRandom = !_this.isRandom;
-      _this.setConfig("isRandom", _this.isRandom);
       randomBtn.classList.toggle("active", _this.isRandom);
     };
 
     // xử lý lặp lại bài hát
     repeatBtn.onclick = function (e) {
       _this.isRepeat = !_this.isRepeat;
-      _this.setConfig("isRepeat", _this.isRepeat);
       repeatBtn.classList.toggle("active", _this.isRepeat);
     };
 
@@ -281,11 +279,6 @@ const app = {
     audio.src = this.currentSong.path;
   },
 
-  loadConfig: function () {
-    this.isRandom = this.config.isRandom;
-    this.isRepeat = this.config.isRepeat;
-  },
-
   nextSong: function () {
     this.currentIndex++;
     if (this.currentIndex >= this.songs.length) {
@@ -311,9 +304,6 @@ const app = {
   },
 
   start: function () {
-    // gán cấu hình từ config vào ứng dụng
-    this.loadConfig();
-
     // định nghĩa các thuộc tính cho Object
     this.defineProperties();
 
@@ -325,10 +315,6 @@ const app = {
 
     // render playlist
     this.render();
-
-    // hiển thị trạng thái ban đầu của btn repeat và random
-    randomBtn.classList.toggle("active", this.isRandom);
-    repeatBtn.classList.toggle("active", this.isRepeat);
   },
 };
 app.start();
